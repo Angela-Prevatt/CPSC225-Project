@@ -5,7 +5,7 @@ using namespace std;
 //defining each key to make calling easier later
 #define keyUp    72
 #define keyLeft  75
-#define keyLeft 77
+#define keyRight 77
 #define keyDown  80
 
 
@@ -14,7 +14,7 @@ int keyPressed;
 
   while(1)
   {
-     switch (ex = _getch())
+     switch (keyPressed = _getch())
  {
  case keyUp:
      cout << endl << "Up" << endl;//key up
