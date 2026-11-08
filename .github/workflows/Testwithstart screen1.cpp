@@ -6,7 +6,7 @@ More colors: https://jakob-bagterp.github.io/colorist-for-python/ansi-escape-cod
                            //color        //reset
     //cout << ("I want     \x1b[##m  RED  \x1b[0m     color") << endl;
 
-Multi dimentional arrays: https://www.w3schools.com/cpp/cpp_arrays_multi.asp 
+Multi dimentional arrays: https://www.w3schools.com/cpp/cpp_arrays_multi.asp
 
 
 11-6-2026
@@ -31,8 +31,17 @@ ASCII art generated here: https://www.asciiart.eu/text-to-ascii-art
 ******************************************************************************************/
 #include <iostream>
 #include <cstdlib>
+#include <conio.h>
+
 using namespace std;
 
+
+//defining each key to make calling easier later
+#define keyUp    72
+#define keyLeft  75
+#define keyRight 77
+#define keyDown  80
+#define keyEnter 13
 
 //matrix/game screen size
 const int SIZE_ROW = 51; //[32,40] pop up window sizes [51,69] Full school computer screen
@@ -66,19 +75,23 @@ void StartScreen() {
     cout << "\t\t\t\t\t\t\t\t\t\t\t\t \x1b[5m Press enter to begin \x1b[25m  " << endl;
     cout << "\n\n\n\n\n" << endl;
 
-    /*
-    while(user has not pressed enter){
-    wait
+    int keyPressed;
+
+    while (1)
+    {
+        keyPressed = _getch();
+       if (keyPressed!= keyEnter){
+         
+        }
     }
-    */
 }
 
 
 
 int main()
-{ 
+{
     StartScreen();
-    
+
     string space[SIZE_ROW][SIZE_COLUMN];
     int row, column;
 
@@ -88,7 +101,7 @@ int main()
     //fills in game screen with three spaces in each position
     for (row = 0; row < SIZE_ROW; row++) {
         for (column = 0; column < SIZE_COLUMN; column++) {
-            
+
             //randomly adds a star occationally
             if (rand() % 11 == 1) {
                 space[row][column] = " * ";
@@ -104,11 +117,11 @@ int main()
     space[25][34] = "\x1b[106m  \x1b[0m ";
     //rocket   >=>
     space[25][24] = "\x1b[31m>=>\x1b[0m";
-    
-    
+
+
     //print
     //PrintScreen(space);
- 
+
 
     return 0;
 }
