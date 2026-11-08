@@ -1,7 +1,8 @@
 class Celestial {
   private:
   int size;
-  int location;
+  int xCoord;
+  int yCoord;
 public:
   Celestial();
   ~Celestial();
