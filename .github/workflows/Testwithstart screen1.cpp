@@ -82,7 +82,8 @@ void StartScreen() {
 int main()
 {
     StartScreen();
-    
+    int keyPressed;
+
 
 
     string space[SIZE_ROW][SIZE_COLUMN];
@@ -111,19 +112,42 @@ int main()
     //rocket   >=>
     space[25][24] = "\x1b[31m>=>\x1b[0m";
 
-
-    int keyPressed;
+   
+    
 
     while (1)
     {
         keyPressed = _getch();
         if (keyPressed == keyEnter) {
-          PrintScreen(space);
+            PrintScreen(space);
 
         }
-    }
-    
 
+        switch (keyPressed)
+        {
+        case keyUp:
+          //move rocket up
+            space[24][24] = "\x1b[31m>=>\x1b[0m";
+            break;
+        case keyDown:
+            //move rocket down
+            space[26][24] = "\x1b[31m>=>\x1b[0m";
+            break;
+        case keyLeft:
+            //move rocket left
+            space[25][23] = "\x1b[31m>=>\x1b[0m";
+            break;
+        case keyRight:
+            //move rocket right
+            space[25][25] = "\x1b[31m>=>\x1b[0m";
+            break;
+        default:
+            break;
+        }
+        PrintScreen(space);
+    }
+
+    //functionality for removing old rocket
 
     return 0;
 }
