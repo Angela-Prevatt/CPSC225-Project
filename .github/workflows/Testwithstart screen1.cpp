@@ -75,15 +75,6 @@ void StartScreen() {
     cout << "\t\t\t\t\t\t\t\t\t\t\t\t \x1b[5m Press enter to begin \x1b[25m  " << endl;
     cout << "\n\n\n\n\n" << endl;
 
-    int keyPressed;
-
-    while (1)
-    {
-        keyPressed = _getch();
-       if (keyPressed!= keyEnter){
-         
-        }
-    }
 }
 
 
@@ -91,6 +82,8 @@ void StartScreen() {
 int main()
 {
     StartScreen();
+    
+
 
     string space[SIZE_ROW][SIZE_COLUMN];
     int row, column;
@@ -119,8 +112,17 @@ int main()
     space[25][24] = "\x1b[31m>=>\x1b[0m";
 
 
-    //print
-    //PrintScreen(space);
+    int keyPressed;
+
+    while (1)
+    {
+        keyPressed = _getch();
+        if (keyPressed == keyEnter) {
+          PrintScreen(space);
+
+        }
+    }
+    
 
 
     return 0;
