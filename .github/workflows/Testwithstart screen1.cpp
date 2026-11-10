@@ -12,29 +12,11 @@ Multi dimentional arrays: https://www.w3schools.com/cpp/cpp_arrays_multi.asp
 11-6-2026
 Welcome text inspired by Mack's project
 ASCII art generated here: https://www.asciiart.eu/text-to-ascii-art
-  ________  _______     __       ______    _______
-/         )|   __  \   /  \     /  _   \  /       |
-(:   \___/ (. |__) :) /    \   (: ( \___)(: ______)
- \___  \   |:  ____/ /' /\  \   \/ \      \/    |
-  __/  \\  (|  /    //  __'  \  //  \ _   // ___)_
- /  \   :)/|__/ \  /   /  \\  \(:   _) \ (:       |
-(_______/(_______)(___/    \___)\_______) \_______)
-
- ___________  _______    _______   ______   __   ___
-(      _    )/       \  /       | /  _   \ |/ | /   )
- )__/  \\__/|:        |(: ______)(: ( \___)(: |/   /
-    \\_ /   |_____/   ) \/    |   \/ \     |    __/
-    |.  |    //      /  // ___)_  //  \ _  (// _  \
-    \:  |   |:  __   \ (:       |(:   _) \ |: | \  \
-     \__|   |__|  \___) \_______) \_______)(__|  \__)
-     merlin 1
 ******************************************************************************************/
 #include <iostream>
 #include <cstdlib>
 #include <conio.h>
-
 using namespace std;
-
 
 //defining each key to make calling easier later
 #define keyUp    72
@@ -58,8 +40,6 @@ void PrintScreen(string matrix[SIZE_ROW][SIZE_COLUMN]) {
 }
 
 void StartScreen() {
-
-    //5 Line Oblique
     cout << "\t\t\t\t\t\t\t\t\t ||   / |  / /" << endl;
     cout << "\t\t\t\t\t\t\t\t\t ||  /  | / /  ___     //  ___      ___      _   __      ___    " << endl;
     cout << "\t\t\t\t\t\t\t\t\t || / /||/ / //___) ) // //   ) ) //   ) ) // ) )  ) ) //___) )" << endl;
@@ -70,10 +50,26 @@ void StartScreen() {
     cout << "\t\t\t\t\t\t\t\t\t    / /   //   ) )                         " << endl;
     cout << "\t\t\t\t\t\t\t\t\t   / /   //   / /                          " << endl;
     cout << "\t\t\t\t\t\t\t\t\t  / /   ((___/ /                          " << endl;
-    cout << "\n\n\n\n\n" << endl;
+    cout << "\x1b[32m" << endl;//green text starts
+    cout << "\t\t\t\t\t\t\t\t\t      ______                                    " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t     //   ) )                                    " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t    ((         ___      ___      ___      ___   " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t     \\\\      //   ) ) //   ) ) //   ) ) //___) )" << endl;
+    cout << "\t\t\t\t\t\t\t\t\t        ) ) //___/ / //   / / //       //       " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t ((___ / / //       ((___( ( ((____   ((____    " << endl;
+    cout << "" << endl;
+    cout << "\t\t\t\t\t\t\t\t\t  /__  ___/                                     " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t    / /   __      ___      ___     / ___        " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t   / /  //  ) ) //___) ) //   ) ) //\\\\         " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t  / /  //      //       //       //  \\\\        " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t / /  //      ((____   ((____   //    \\\\       " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t " << endl;
+    cout << "\x1b[0m "<< endl;//green text ends
 
-    cout << "\t\t\t\t\t\t\t\t\t\t\t\t \x1b[5m Press enter to begin \x1b[25m  " << endl;
-    cout << "\n\n\n\n\n" << endl;
+    cout << "\t\t\t\t\t\t\t\t\t\t\t\t \x1b[5m Press enter to begin \x1b[25m  " << endl;//blinky text
 
 }
 
@@ -83,8 +79,6 @@ int main()
 {
     StartScreen();
     int keyPressed;
-
-
 
     string space[SIZE_ROW][SIZE_COLUMN];
     int row, column;
@@ -106,48 +100,71 @@ int main()
         }
     }
 
-    //printing with color
-    //neptune
-    space[25][34] = "\x1b[106m  \x1b[0m ";
-    //rocket   >=>
-    space[25][24] = "\x1b[31m>=>\x1b[0m";
 
-   
+    //Planets
     
+    //sun
+    for (int i = 22; i < 29; i++) {
+        for (int j = 33; j < 40; j++) {
+            space[i][j] = "\x1b[103m  \x1b[0m";
+        }
+    }
+   // space[24][34] = "\x1b[103m  \x1b[0m ";
+    
+    //mercury
+    space[23][44] = "\x1b[43m  \x1b[0m ";
+    //Earth
+    space[23][44] = "\x1b[43m  \x1b[0m ";
 
-    while (1)
+    
+    //rocket   >=>
+    int xRocketPosition = 25;
+    int yRocketPosition = 24;
+    space[yRocketPosition][xRocketPosition] = "\x1b[31m>=>\x1b[0m";
+
+
+    //chnaged to a do -while for project requirments
+    bool win = false;
+    do
     {
         keyPressed = _getch();
         if (keyPressed == keyEnter) {
             PrintScreen(space);
-
         }
 
+        //functionality for removing old rocket
+        space[yRocketPosition][xRocketPosition] = "\x1b[30m>=>\x1b[0m";
+
+        //chooses position for new rocket
         switch (keyPressed)
         {
         case keyUp:
-          //move rocket up
-            space[24][24] = "\x1b[31m>=>\x1b[0m";
+            //move rocket up
+            yRocketPosition--;
             break;
         case keyDown:
             //move rocket down
-            space[26][24] = "\x1b[31m>=>\x1b[0m";
+            yRocketPosition++;
             break;
         case keyLeft:
             //move rocket left
-            space[25][23] = "\x1b[31m>=>\x1b[0m";
+            xRocketPosition--;
             break;
         case keyRight:
             //move rocket right
-            space[25][25] = "\x1b[31m>=>\x1b[0m";
+            xRocketPosition++;
             break;
         default:
             break;
         }
-        PrintScreen(space);
-    }
 
-    //functionality for removing old rocket
+        //if(the rocket is on the sun [)
+
+        //prints new rocket
+        space[yRocketPosition][xRocketPosition] = "\x1b[31m>=>\x1b[0m";
+        PrintScreen(space);
+
+    } while (win == false);
 
     return 0;
 }
