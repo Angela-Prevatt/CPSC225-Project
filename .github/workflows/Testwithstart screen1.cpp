@@ -1,5 +1,5 @@
 /*
-*
+* Elizabeth Zurybida 11-4-2026
 Refrences:
 How to use ANSI colors: https://jakob-bagterp.github.io/colorist-for-python/ansi-escape-codes/introduction/#sequence-parts
 More colors: https://jakob-bagterp.github.io/colorist-for-python/ansi-escape-codes/extended-256-colors/#examples
@@ -12,17 +12,11 @@ Multi dimentional arrays: https://www.w3schools.com/cpp/cpp_arrays_multi.asp
 11-6-2026
 Welcome text inspired by Mack's project
 ASCII art generated here: https://www.asciiart.eu/text-to-ascii-art
-
-11-10-2026
-Working out how to clear screen
-https://www.geeksforgeeks.org/cpp/how-to-clear-console-in-cpp/
 ******************************************************************************************/
 #include <iostream>
 #include <cstdlib>
 #include <conio.h>
-
-#include "StartScreen.h"
-//#include "celestials.h"
+#include "celestials.h"
 using namespace std;
 
 //defining each key to make calling easier later
@@ -45,6 +39,41 @@ void PrintScreen(string matrix[SIZE_ROW][SIZE_COLUMN]) {
         cout << "\n";
     }
 }
+
+void StartScreen() {
+    cout << "\t\t\t\t\t\t\t\t\t ||   / |  / /" << endl;
+    cout << "\t\t\t\t\t\t\t\t\t ||  /  | / /  ___     //  ___      ___      _   __      ___    " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t || / /||/ / //___) ) // //   ) ) //   ) ) // ) )  ) ) //___) )" << endl;
+    cout << "\t\t\t\t\t\t\t\t\t ||/ / |  / //       // //       //   / / // / /  / / //" << endl;
+    cout << "\t\t\t\t\t\t\t\t\t |  /  | / ((____   // ((____   ((___/ / // / /  / / ((____" << endl;
+    cout << "" << endl;
+    cout << "\t\t\t\t\t\t\t\t\t  __  ___  ___                             " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t    / /   //   ) )                         " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t   / /   //   / /                          " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t  / /   ((___/ /                          " << endl;
+    cout << "\x1b[32m" << endl;//green text starts
+    cout << "\t\t\t\t\t\t\t\t\t      ______                                    " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t     //   ) )                                    " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t    ((         ___      ___      ___      ___   " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t     \\\\      //   ) ) //   ) ) //   ) ) //___) )" << endl;
+    cout << "\t\t\t\t\t\t\t\t\t        ) ) //___/ / //   / / //       //       " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t ((___ / / //       ((___( ( ((____   ((____    " << endl;
+    cout << "" << endl;
+    cout << "\t\t\t\t\t\t\t\t\t  /__  ___/                                     " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t    / /   __      ___      ___     / ___        " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t   / /  //  ) ) //___) ) //   ) ) //\\\\         " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t  / /  //      //       //       //  \\\\        " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t / /  //      ((____   ((____   //    \\\\       " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t " << endl;
+    cout << "\t\t\t\t\t\t\t\t\t " << endl;
+    cout << "\x1b[0m "<< endl;//green text ends
+
+    cout << "\t\t\t\t\t\t\t\t\t\t\t\t \x1b[5m Press enter to begin \x1b[25m  " << endl;//blinky text
+
+}
+
 
 
 int main()
@@ -74,21 +103,22 @@ int main()
 
 
     //Planets
-
+    Celestial c(3, 22, 28);
+    
     //sun
     for (int i = 22; i < 29; i++) {
         for (int j = 33; j < 40; j++) {
             space[i][j] = "\x1b[103m  \x1b[0m";
         }
     }
-    // space[24][34] = "\x1b[103m  \x1b[0m ";
-
-     //mercury
+   // space[24][34] = "\x1b[103m  \x1b[0m ";
+    
+    //mercury
     space[23][44] = "\x1b[43m  \x1b[0m ";
     //Earth
     space[23][44] = "\x1b[43m  \x1b[0m ";
 
-
+    
     //rocket   >=>
     int xRocketPosition = 25;
     int yRocketPosition = 24;
@@ -97,7 +127,6 @@ int main()
 
     //chnaged to a do -while for project requirments
     bool win = false;
-    bool lose = false;
     do
     {
         keyPressed = _getch();
@@ -131,25 +160,13 @@ int main()
             break;
         }
 
-        if(yRocketPosition==22 && xRocketPosition ==33){
-          //throw("You died");
-            lose == true;
-            break;
-         }
-
-
-        //clears screen
-        system("cls");
+        //if(the rocket is on the sun [)
 
         //prints new rocket
         space[yRocketPosition][xRocketPosition] = "\x1b[31m>=>\x1b[0m";
         PrintScreen(space);
 
     } while (win == false);
-    system("cls");
-    if (lose == true) {
-        cout << "loser";
-    }
-  
+
     return 0;
 }
