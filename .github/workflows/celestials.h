@@ -8,7 +8,9 @@ class Celestial {
   int yCoord;
 public:
   Celestial(int s=5, int x=24, int y=24);
-  ~Celestial();
+  ~Celestial(){
+	  cout << "destructed" << endl;
+  }
 };
 
 class Planet: public Celestial{
