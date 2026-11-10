@@ -4,7 +4,7 @@ class Celestial {
   int xCoord;
   int yCoord;
 public:
-  Celestial();
+  Celestial(int, int, int);
   ~Celestial();
 }
 
@@ -12,7 +12,7 @@ class Planet: public Celestial{
   public:
   int gravity;
   string name;
-  Planet();
+  Planet(string);
 }
 
 class Comet : public Celestial {
