@@ -12,6 +12,7 @@ class Planet: public Celestial{
   public:
   int gravity;
   string name;
+  Planet();
 }
 
 class Comet : public Celestial {
