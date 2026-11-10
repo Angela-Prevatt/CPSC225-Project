@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 class Celestial {
   private:
   int size;
