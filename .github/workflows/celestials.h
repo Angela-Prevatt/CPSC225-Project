@@ -7,18 +7,18 @@ class Celestial {
   int xCoord;
   int yCoord;
 public:
-  Celestial(int, int, int);
+  Celestial(int s=5, int x=24, int y=24);
   ~Celestial();
-}
+};
 
 class Planet: public Celestial{
   public:
   int gravity;
   string name;
   Planet(string);
-}
+};
 
 class Comet : public Celestial {
   public:
 int speed;
-}
+};
