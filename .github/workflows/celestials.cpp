@@ -25,6 +25,15 @@ void Celestial::screenPrint(string space[51][69]) {
 	}
 }
 
+int Celestial::getS() {
+	return size;
+}
+int Celestial::getX() {
+	return xCoord;
+}
+int Celestial::getY() {
+	return yCoord;
+}
 
 Planet::Planet(int c) {
 	color = c;
