@@ -13,6 +13,9 @@ public:
   ~Celestial(){
 	  cout << "destructed" << endl;
   }
+int getS();
+int getX();
+int getY();
 };
 
 class Planet: public Celestial{
