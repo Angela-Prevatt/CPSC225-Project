@@ -69,19 +69,29 @@ int main()
     }
 
 
-    //Planets
-    Celestial sun(5, 22, 33);
+    //Celestial bodies
+
+    //sun (make and call print fn)
+    Celestial sun(5, 22, 33); 
     sun.screenPrint(space);
 
     
-    //sun
    
-   // space[24][34] = "\x1b[103m  \x1b[0m ";
+   
+   //pace[24][34] = "\x1b[103m  \x1b[0m ";
     
-    //mercury
-    space[23][44] = "\x1b[43m  \x1b[0m ";
+	//mercury(make and call print fn)
+	Planet mercury(31);
+    mercury.setVals(3, 10, 10);
+	mercury.screenPrint(space);
+   
+
+
     //Earth
-    space[23][44] = "\x1b[43m  \x1b[0m ";
+    Planet earth(12);
+    earth.setVals(1, 40, 15);
+	earth.screenPrint(space);
+  
 
     
     //rocket   >=>
