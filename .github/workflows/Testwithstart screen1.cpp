@@ -17,6 +17,7 @@ ASCII art generated here: https://www.asciiart.eu/text-to-ascii-art
 #include <cstdlib>
 #include <conio.h>
 #include "celestials.h"
+#include "StartScreen.h"
 using namespace std;
 
 //defining each key to make calling easier later
@@ -38,40 +39,6 @@ void PrintScreen(string matrix[SIZE_ROW][SIZE_COLUMN]) {
         }
         cout << "\n";
     }
-}
-
-void StartScreen() {
-    cout << "\t\t\t\t\t\t\t\t\t ||   / |  / /" << endl;
-    cout << "\t\t\t\t\t\t\t\t\t ||  /  | / /  ___     //  ___      ___      _   __      ___    " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t || / /||/ / //___) ) // //   ) ) //   ) ) // ) )  ) ) //___) )" << endl;
-    cout << "\t\t\t\t\t\t\t\t\t ||/ / |  / //       // //       //   / / // / /  / / //" << endl;
-    cout << "\t\t\t\t\t\t\t\t\t |  /  | / ((____   // ((____   ((___/ / // / /  / / ((____" << endl;
-    cout << "" << endl;
-    cout << "\t\t\t\t\t\t\t\t\t  __  ___  ___                             " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t    / /   //   ) )                         " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t   / /   //   / /                          " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t  / /   ((___/ /                          " << endl;
-    cout << "\x1b[32m" << endl;//green text starts
-    cout << "\t\t\t\t\t\t\t\t\t      ______                                    " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t     //   ) )                                    " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t    ((         ___      ___      ___      ___   " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t     \\\\      //   ) ) //   ) ) //   ) ) //___) )" << endl;
-    cout << "\t\t\t\t\t\t\t\t\t        ) ) //___/ / //   / / //       //       " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t ((___ / / //       ((___( ( ((____   ((____    " << endl;
-    cout << "" << endl;
-    cout << "\t\t\t\t\t\t\t\t\t  /__  ___/                                     " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t    / /   __      ___      ___     / ___        " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t   / /  //  ) ) //___) ) //   ) ) //\\\\         " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t  / /  //      //       //       //  \\\\        " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t / /  //      ((____   ((____   //    \\\\       " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t " << endl;
-    cout << "\t\t\t\t\t\t\t\t\t " << endl;
-    cout << "\x1b[0m "<< endl;//green text ends
-
-    cout << "\t\t\t\t\t\t\t\t\t\t\t\t \x1b[5m Press enter to begin \x1b[25m  " << endl;//blinky text
-
 }
 
 
@@ -103,14 +70,12 @@ int main()
 
 
     //Planets
-    Celestial c(3, 22, 28);
+    Celestial sun(5, 22, 33);
+    sun.screenPrint(space);
+
     
     //sun
-    for (int i = 22; i < 29; i++) {
-        for (int j = 33; j < 40; j++) {
-            space[i][j] = "\x1b[103m  \x1b[0m";
-        }
-    }
+   
    // space[24][34] = "\x1b[103m  \x1b[0m ";
     
     //mercury
