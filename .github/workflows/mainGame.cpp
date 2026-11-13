@@ -199,7 +199,7 @@ int main()
             {
                 int color = object.getC();
                 planets[color] = 'x';
-				int currentPlanet = color;
+				
 
                 // check for a win
                 win = true;
@@ -209,14 +209,41 @@ int main()
                     }
                 }
 				 int temp = (rand() % 6) + 1;
- 					int goingTo = temp;
- 					//double distance= 
+ 					
+
                 // look for if something is still unvisited
                 if (win == false) {
                     while (planets[temp] == 'x') {
-                        temp = (rand() % 6) + 1;
+                        temp = (rand() % 6) + 1;//reget temp
+                       
+                    }
+                    int goingTo = temp;
+                    //determine dist using overloaded operator
+                    double distancePlanet = 0.0;
+                    switch (goingTo) {
+                    case 1:
+                        distancePlanet = object - red;
+                        break;
+                    case 2:
+                        distancePlanet = object - orange;
+                        break;
+                    case 3:
+                        distancePlanet = object - green;
+                        break;
+                    case 4:
+                        distancePlanet = object - blue;
+                        break;
+                    case 5:
+                        distancePlanet = object - purple;
+                        break;
+                    case 6:
+                        distancePlanet = object - pink;
+                        break;
+                    default:
+                        break;
                     }
                     printClues(temp);
+					cout << "Distance to next Planet: " << distancePlanet << endl;
                 }
 
                 yRocketPosition -= object.getS();
