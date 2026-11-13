@@ -1,0 +1,7 @@
+conio
+-stack overflow, geeksforgeeks
+-Mack's presentation
+
+cmath
+-w3schools
+-cplusplus.com
