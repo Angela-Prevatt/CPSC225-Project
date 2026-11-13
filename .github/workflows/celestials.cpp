@@ -37,7 +37,11 @@ int Celestial::getX() {
 int Celestial::getY() {
 	return yCoord;
 }
-
+double operator-(Celestial& c1,Celestial& c2) {//overload operator
+	int diffX = c2.getX()-c1.getX();
+	int diffY = c2.getY()-c1.getY();
+	return sqrt(pow(diffY, 2) + pow(diffX, 2));//use pythagorean for distance formula
+}
 
 Planet::Planet(int c) {
 	color = c;
