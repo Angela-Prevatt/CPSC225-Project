@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <conio.h>
+#include <cmath> //ADDED THIS
 #include "celestials.h"
 using namespace std;
 
@@ -38,6 +39,13 @@ int Celestial::getY() {
 	return yCoord;
 }
 
+double operator-(Celestial& c1,Celestial& c2) {//overload operator
+	int diffX = c2.getX()-c1.getX();
+	int diffY = c2.getY()-c1.getY();
+	return sqrt(pow(diffY, 2) + pow(diffX, 2));//use pythagorean for distance formula
+}
+
+
 Planet::Planet(int c) {
 	color = c;
 }
@@ -69,6 +77,5 @@ void Planet::screenPrint(string board[51][69]) {
 			}
 		}
 	} 
-	cout << "end" << endl;
  }
 
