@@ -101,15 +101,24 @@ int main()
         //pace[24][34] = "\x1b[103m  \x1b[0m ";
 
          //orange planet(make and call print fn)
-        Planet orange(1);
-        orange.setVals(3, 10, 10);
+        Planet orange(2);
+        orange.setVals(4, 10, 10);
         orange.screenPrint(space);
 
         //blue planet
         Planet blue(4);
-        blue.setVals(1, 40, 15);
+        blue.setVals(2, 40, 15);
         blue.screenPrint(space);
-     
+        
+        //red planet
+		Planet red(1);
+        red.setVals(1, 34, 55);
+        red.screenPrint(space);
+
+        //green 
+        Planet green(5);
+        green.setVals(7, 55, 1);
+        green.screenPrint(space);
 
 
 
