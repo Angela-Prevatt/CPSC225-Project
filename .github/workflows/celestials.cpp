@@ -46,20 +46,24 @@ void Planet::screenPrint(string board[51][69]) {
 		for (int jj = yCoord; jj < yCoord + size; jj++) {
 			switch (color) {
 			case 1: //red
-			board[ii][jj] = "\x1b[48;5;9m  \x1b[0m";
+			board[ii][jj] = "\x1b[48;5;1m  \x1b[0m";
 			break;
 			case 2: //orange
-				board[ii][jj] = "\x1b[48;5;66m  \x1b[0m";
+				board[ii][jj] = "\x1b[48;5;166m  \x1b[0m";
 				break;
-			case 3: //yellow
-				board[ii][jj] = "\x1b[103m  \x1b[0m";
+			case 3: //purple
+				board[ii][jj] = "\x1b[48;5;91m  \x1b[0m";
 				break;
 			case 4: //blue
 				board[ii][jj] = "\x1b[48;5;12m  \x1b[0m";
 				break;
-			case 5: //pink
-				board[ii][jj] = "\x1b[48;5;13m  \x1b[0m";
+			case 5: //green
+				board[ii][jj] = "\x1b[48;5;193m  \x1b[0m";
 				break;
+			case 6: //pink
+				board[ii][jj] = "\x1b[48;5;201m  \x1b[0m";
+				break;
+			
 		 default:
 				break;
 			}
