@@ -100,27 +100,33 @@ int main()
 
         //pace[24][34] = "\x1b[103m  \x1b[0m ";
 
+         //red planet
+        Planet red(1);
+        red.setVals(1, 34, 30);
+        red.screenPrint(space);
+
          //orange planet(make and call print fn)
         Planet orange(2);
         orange.setVals(4, 10, 10);
         orange.screenPrint(space);
 
+        //purple planet
+        Planet purple(3);
+        purple.setVals(2, 10, 52);
+        purple.screenPrint(space);
+
+
         //blue planet
         Planet blue(4);
-        blue.setVals(2, 40, 15);
+        blue.setVals(3, 30, 15);
         blue.screenPrint(space);
-        
-        //red planet
-		Planet red(1);
-        red.setVals(1, 34, 55);
-        red.screenPrint(space);
 
-        //green 
+
+        //green planet
         Planet green(5);
-        green.setVals(7, 55, 1);
+        green.setVals(6, 44, 60);
         green.screenPrint(space);
-
-
+        
 
         //rocket   >=>
         int xRocketPosition = 25;
