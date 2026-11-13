@@ -1,0 +1,16 @@
+/*
+* 
+Refrences:
+How to use ANSI colors: https://jakob-bagterp.github.io/colorist-for-python/ansi-escape-codes/introduction/#sequence-parts
+
+More colors: https://jakob-bagterp.github.io/colorist-for-python/ansi-escape-codes/extended-256-colors/#examples
+
+Multi dimentional arrays: https://www.w3schools.com/cpp/cpp_arrays_multi.asp
+
+Welcome text inspired by Mack's project
+ASCII art generated here: https://www.asciiart.eu/text-to-ascii-art
+
+Exceptions learned from Marriott's Presentations
+timer: https://stackoverflow.com/questions/12231166/timing-algorithm-clock-vs-time-in-c
+skipping lines in files : https://cplusplus.com/reference/istream/istream/ignore/
+******************************************************************************************/
