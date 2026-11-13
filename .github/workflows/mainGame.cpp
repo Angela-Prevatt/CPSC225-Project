@@ -126,7 +126,15 @@ int main()
         Planet green(5);
         green.setVals(6, 44, 60);
         green.screenPrint(space);
-        
+
+		int secretPlanet = rand() % 10 + 1; //10% chance of secret planet appearing
+       // int secretPlanet = 1;//for testing
+        if (secretPlanet == 1) {
+            //pink planet
+            Planet pink(6);
+            pink.setVals(2, 15, 30);
+			pink.screenPrint(space);
+        }
 
         //rocket   >=>
         int xRocketPosition = 25;
