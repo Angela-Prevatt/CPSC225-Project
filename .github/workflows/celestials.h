@@ -16,8 +16,7 @@ virtual void screenPrint(string space[51][69]); //virtual since planet will inhe
 int getS();
 int getX();
 int getY();
-
-
+friend double operator-(Celestial&, Celestial&); //operator overloading
 
 };
 
