@@ -19,6 +19,7 @@ Exception from Marriot Presentations
 #include <iostream>
 #include <cstdlib>
 #include <conio.h>
+#include<fstream>
 #include "celestials.h"
 #include "StartScreen.h"
 using namespace std;
@@ -29,6 +30,7 @@ using namespace std;
 #define keyRight 77
 #define keyDown  80
 #define keyEnter 13
+#define keyHelp 104
 
 //matrix/game screen size
 const int SIZE_ROW = 51; //[32,40] pop up window size, [51,69] Full school computer screen
@@ -43,6 +45,7 @@ void PrintScreen(string matrix[SIZE_ROW][SIZE_COLUMN]) {
         cout << "\n";
     }
 }
+
 
 void checkPlanets(int x, int y, Celestial object)//only works for sun currently
 {
@@ -70,106 +73,114 @@ int main()
 
     //makes random variables truely random
     srand(time(0));
-
-    //fills in game screen with three spaces in each position
-    for (row = 0; row < SIZE_ROW; row++) {
-        for (column = 0; column < SIZE_COLUMN; column++) {
-
-            //randomly adds a star occationally
-            if (rand() % 11 == 1) {
-                space[row][column] = " * ";
-            }
-            else {
-                space[row][column] = "   ";
-            }
-        }
-    }
-
-
-    //Celestial bodies
-
-    //sun (make and call print fn)
-    Celestial sun(5, 22, 33); 
-    sun.screenPrint(space);
-
-   //pace[24][34] = "\x1b[103m  \x1b[0m ";
-    
-	//mercury(make and call print fn)
-	Planet mercury(31);
-    mercury.setVals(3, 10, 10);
-	mercury.screenPrint(space);
    
-    //Earth
-    Planet earth(12);
-    earth.setVals(1, 40, 15);
-	earth.screenPrint(space);
-  
-
-    
-    //rocket   >=>
-    int xRocketPosition = 25;
-    int yRocketPosition = 24;
-    space[yRocketPosition][xRocketPosition] = "\x1b[31m>=>\x1b[0m";
+     
 
 
-    //chnaged to a do-while for project requirments
-    bool win = false;
-    bool lose = false;
-    do
-    {
-        keyPressed = _getch();
-        if (keyPressed == keyEnter) {
-            PrintScreen(space);
-        }
+        //fills in game screen with three spaces in each position
+        for (row = 0; row < SIZE_ROW; row++) {
+            for (column = 0; column < SIZE_COLUMN; column++) {
 
-        //functionality for removing old rocket    
-        space[yRocketPosition][xRocketPosition] = "   ";
-
-        //chooses position for new rocket
-        switch (keyPressed)
-        {
-        case keyUp:
-            //move rocket up
-            yRocketPosition--;
-            break;
-        case keyDown:
-            //move rocket down
-            yRocketPosition++;
-            break;
-        case keyLeft:
-            //move rocket left
-            xRocketPosition--;
-            break;
-        case keyRight:
-            //move rocket right
-            xRocketPosition++;
-            break;
-        default:
-            break;
+                //randomly adds a star occationally
+                if (rand() % 11 == 1) {
+                    space[row][column] = " * ";
+                }
+                else {
+                    space[row][column] = "   ";
+                }
+            }
         }
 
 
-        try
-        {
-            checkPlanets(xRocketPosition, yRocketPosition, sun);
-        }
-        catch (string message)
-        {
-            cout << message << endl;
-            lose = true;
-        }
+        //Celestial bodies
 
-        //prints new rocket
+        //sun (make and call print fn)
+        Celestial sun(5, 22, 33);
+        sun.screenPrint(space);
+
+        //pace[24][34] = "\x1b[103m  \x1b[0m ";
+
+         //orange planet(make and call print fn)
+        Planet orange(1);
+        orange.setVals(3, 10, 10);
+        orange.screenPrint(space);
+
+        //blue planet
+        Planet blue(4);
+        blue.setVals(1, 40, 15);
+        blue.screenPrint(space);
+     
+
+
+
+        //rocket   >=>
+        int xRocketPosition = 25;
+        int yRocketPosition = 24;
         space[yRocketPosition][xRocketPosition] = "\x1b[31m>=>\x1b[0m";
-        PrintScreen(space);
 
-    } while (win == false && lose == false);
 
-    system("cls");
+        //chnaged to a do-while for project requirments
+        bool win = false;
+        bool lose = false;
+        do
+        {
+            keyPressed = _getch();
+            if (keyPressed == keyEnter) {
+                PrintScreen(space);
+            }
+
+            //functionality for removing old rocket    
+            space[yRocketPosition][xRocketPosition] = "   ";
+
+            //chooses position for new rocket
+            switch (keyPressed)
+            {
+            case keyUp:
+                //move rocket up
+                yRocketPosition--;
+                break;
+            case keyDown:
+                //move rocket down
+                yRocketPosition++;
+                break;
+            case keyLeft:
+                //move rocket left
+                xRocketPosition--;
+                break;
+            case keyRight:
+                //move rocket right
+                xRocketPosition++;
+                break;
+            default:
+                break;
+            }
+
+
+            try
+            {
+                checkPlanets(xRocketPosition, yRocketPosition, sun);
+            }
+            catch (string message)
+            {
+                cout << message << endl;
+                lose = true;
+            }
+
+            //prints new rocket
+            space[yRocketPosition][xRocketPosition] = "\x1b[31m>=>\x1b[0m";
+            PrintScreen(space);
+           
+
+        } while (win == false && lose == false);
+
+        system("cls");
         if (lose == true) {
             cout << "\n\n\n\n\n\n\t\t\t\t\t\t\t\t\t\t\t You have chosen to fly into the sun  " << endl;
             cout << "\n\t\t\t\t\t\t\t\t\t\t\t\t      \x1b[31m You lose \x1b[0m  " << endl;
         }
+
+    return 0;
+}
 
 
     return 0;
