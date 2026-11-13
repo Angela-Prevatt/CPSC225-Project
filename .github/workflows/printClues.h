@@ -1,0 +1,1 @@
+void printClues(int color);
