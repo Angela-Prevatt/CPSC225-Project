@@ -1,23 +1,3 @@
-/*
-* 
-Refrences:
-How to use ANSI colors: https://jakob-bagterp.github.io/colorist-for-python/ansi-escape-codes/introduction/#sequence-parts
-More colors: https://jakob-bagterp.github.io/colorist-for-python/ansi-escape-codes/extended-256-colors/#examples
-                           //color        //reset
-    //cout << ("I want     \x1b[##m  RED  \x1b[0m     color") << endl;
-
-Multi dimentional arrays: https://www.w3schools.com/cpp/cpp_arrays_multi.asp
-
-
-11-6-2026
-Welcome text inspired by Mack's project
-ASCII art generated here: https://www.asciiart.eu/text-to-ascii-art
-
-11-12-2026
-Exception from Marriot Presentations
-timer: https://stackoverflow.com/questions/12231166/timing-algorithm-clock-vs-time-in-c
-skipping lines in files : https://cplusplus.com/reference/istream/istream/ignore/
-******************************************************************************************/
 #include <iostream>
 #include <cstdlib>//random function
 #include <ctime>//for rand to make more rand
