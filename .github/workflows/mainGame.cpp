@@ -15,14 +15,18 @@ ASCII art generated here: https://www.asciiart.eu/text-to-ascii-art
 
 11-12-2026
 Exception from Marriot Presentations
+timer: https://stackoverflow.com/questions/12231166/timing-algorithm-clock-vs-time-in-c
 ******************************************************************************************/
 #include <iostream>
-#include <cstdlib>
-#include <conio.h>
-#include<fstream>
+#include <cstdlib>//random function
+#include <conio.h>//key presses
+#include <chrono>//for game timing
+#include<fstream>//for file IO
 #include "celestials.h"
 #include "StartScreen.h"
+
 using namespace std;
+using namespace std::chrono;
 
 //defining each key to make calling easier later
 #define keyUp    72
@@ -36,7 +40,6 @@ using namespace std;
 const int SIZE_ROW = 51; //[32,40] pop up window size, [51,69] Full school computer screen
 const int SIZE_COLUMN = 69;
 
-
 void PrintScreen(string matrix[SIZE_ROW][SIZE_COLUMN]) {
     for (int r = 0; r < SIZE_ROW; r++) {
         for (int c = 0; c < SIZE_COLUMN; c++) {
@@ -46,11 +49,10 @@ void PrintScreen(string matrix[SIZE_ROW][SIZE_COLUMN]) {
     }
 }
 
-
 void checkPlanets(int x, int y, Celestial object)//only works for sun currently
 {
     const string MSG = "Rock ship hit orbital body";
-
+	
     //loop goes through each position on sun and makes sure rocket hasn't hit it
     for (int i = object.getX(); i < object.getX() + object.getS(); i++) {
         for (int j = object.getY(); j < object.getY() + object.getS(); j++) {
@@ -97,31 +99,22 @@ int main()
         //sun (make and call print fn)
         Celestial sun(5, 22, 33);
         sun.screenPrint(space);
-
-        //pace[24][34] = "\x1b[103m  \x1b[0m ";
-
-         //red planet
+        //red planet
         Planet red(1);
         red.setVals(1, 34, 30);
         red.screenPrint(space);
-
-         //orange planet(make and call print fn)
+        //orange planet(make and call print fn)
         Planet orange(2);
         orange.setVals(4, 10, 10);
         orange.screenPrint(space);
-
         //purple planet
         Planet purple(3);
         purple.setVals(2, 10, 52);
         purple.screenPrint(space);
-
-
         //blue planet
         Planet blue(4);
         blue.setVals(3, 30, 15);
         blue.screenPrint(space);
-
-
         //green planet
         Planet green(5);
         green.setVals(6, 44, 60);
@@ -141,17 +134,20 @@ int main()
         int yRocketPosition = 24;
         space[yRocketPosition][xRocketPosition] = "\x1b[31m>=>\x1b[0m";
 
-
-        //chnaged to a do-while for project requirments
+		keyPressed = _getch();
+            if (keyPressed == keyEnter) {
+                PrintScreen(space);
+            }
+		//starts stopwatch for user
+		auto start = high_resolution_clock::now();
+	
+        //changed to a do-while for project requirments
         bool win = false;
         bool lose = false;
         do
         {
             keyPressed = _getch();
-            if (keyPressed == keyEnter) {
-                PrintScreen(space);
-            }
-
+          
             //functionality for removing old rocket    
             space[yRocketPosition][xRocketPosition] = "   ";
 
@@ -193,13 +189,16 @@ int main()
             space[yRocketPosition][xRocketPosition] = "\x1b[31m>=>\x1b[0m";
             PrintScreen(space);
            
-
         } while (win == false && lose == false);
 
+		//stops stopwach and records time
+		auto end = high_resolution_clock::now();
+		auto duration = duration_cast<milliseconds>(end - start);
+	
         system("cls");
         if (lose == true) {
-            cout << "\n\n\n\n\n\n\t\t\t\t\t\t\t\t\t\t\t You have chosen to fly into the sun  " << endl;
-            cout << "\n\t\t\t\t\t\t\t\t\t\t\t\t      \x1b[31m You lose \x1b[0m  " << endl;
+            cout << "\n\n\n\n\n\n\t\t\t\t\t\t\t\t\t\t\t You have chosen to fly into the sun "<<(duration.count()*0.001)<<" seconds in." << endl;
+			cout << "\n\t\t\t\t\t\t\t\t\t\t\t\t              \x1b[31m You lose \x1b[0m  " << endl;
         }
 
     return 0;
