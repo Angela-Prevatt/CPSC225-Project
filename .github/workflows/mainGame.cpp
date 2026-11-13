@@ -94,22 +94,27 @@ int main()
     Planet red(1);
     red.setVals(2, 34, 30);
     red.screenPrint(space);
+	space[34][30] = "\x1b[48;5;1mM \x1b[0m";
     //orange planet(make and call print fn)
     Planet orange(2);
     orange.setVals(4, 10, 10);
     orange.screenPrint(space);
+	space[10][10] = "\x1b[48;5;166mS \x1b[0m";
     //purple planet
     Planet purple(3);
     purple.setVals(3, 10, 52);
     purple.screenPrint(space);
+	space[10][52] = "\x1b[48;5;91mV \x1b[0m";
     //blue planet
     Planet blue(4);
     blue.setVals(6, 30, 15);
     blue.screenPrint(space);
+	space[30][15] = "\x1b[48;5;12mU \x1b[0m";
     //green planet
     Planet green(5);
     green.setVals(5, 44, 60);
     green.screenPrint(space);
+	space[44][60] = "\x1b[48;5;193mE \x1b[0m";
 
 	int secretPlanet = rand() % 10 + 1; //10% chance of secret planet appearing
     // int secretPlanet = 1;//for testing
@@ -118,6 +123,7 @@ int main()
         //pink planet
         pink.setVals(2, 15, 30);
 		pink.screenPrint(space);
+		space[15][30] = "\x1b[48;5;201mS \x1b[0m";
         planets[6] = 's';
     }
 
