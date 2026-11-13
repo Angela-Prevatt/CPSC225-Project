@@ -1,81 +1,32 @@
 #include <iostream>
-#include <cstdlib>
-#include <conio.h>
-#include <cmath> //ADDED THIS
-#include "celestials.h"
 using namespace std;
 
-const int SIZE_ROW = 51; //[32,40] pop up window sizes [51,69] Full school computer screen
-const int SIZE_COLUMN = 69;
+class Celestial {
+  protected:
+  int size;
+  int xCoord;
+  int yCoord;
+public:
+virtual void screenPrint(string space[51][69]); //virtual since planet will inherit, take space string so it can print
+	void setVals(int s, int x, int y);
+  Celestial(int s=5, int x=24, int y=24); //makes the sun as default
+  ~Celestial(){
+	  cout << " "<< endl;
+  }
+int getS();
+int getX();
+int getY();
 
 
 
-void Celestial::setVals(int s, int x, int y) {
-	size = s;
-	xCoord = x;
-	yCoord = y;
-}
+};
 
-Celestial :: Celestial(int s, int x, int y){
-	setVals(s, x, y);
-}
+class Planet: public Celestial{
+  public:
+  int color;
+  void screenPrint(string space[51][69]) override;
+  Planet(int);
+  int getC();
+};
 
-void Celestial :: screenPrint(string space[51][69])  {
-	
-	for (int i = xCoord; i < xCoord + size; i++) { //loop for size, will print square of s size starting in x,y corner
-		for (int j = yCoord; j < yCoord + size; j++) {
-			space[i][j] = "\x1b[103m  \x1b[0m";
-		}
-	}
-}
-
-int Celestial::getS() {
-	return size;
-}
-int Celestial::getX() {
-	return xCoord;
-}
-int Celestial::getY() {
-	return yCoord;
-}
-
-double operator-(Celestial& c1,Celestial& c2) {//overload operator
-	int diffX = c2.getX()-c1.getX();
-	int diffY = c2.getY()-c1.getY();
-	return sqrt(pow(diffY, 2) + pow(diffX, 2));//use pythagorean for distance formula
-}
-
-
-Planet::Planet(int c) {
-	color = c;
-}
-void Planet::screenPrint(string board[51][69]) {
-	for (int ii = xCoord; ii < xCoord + size; ii++) { //loop for size, will print square of s size starting in x,y corner
-		for (int jj = yCoord; jj < yCoord + size; jj++) {
-			switch (color) {
-			case 1: //red
-			board[ii][jj] = "\x1b[48;5;1m  \x1b[0m";
-			break;
-			case 2: //orange
-				board[ii][jj] = "\x1b[48;5;166m  \x1b[0m";
-				break;
-			case 3: //purple
-				board[ii][jj] = "\x1b[48;5;91m  \x1b[0m";
-				break;
-			case 4: //blue
-				board[ii][jj] = "\x1b[48;5;12m  \x1b[0m";
-				break;
-			case 5: //green
-				board[ii][jj] = "\x1b[48;5;193m  \x1b[0m";
-				break;
-			case 6: //pink
-				board[ii][jj] = "\x1b[48;5;201m  \x1b[0m";
-				break;
-			
-		 default:
-				break;
-			}
-		}
-	} 
- }
-
+void PrintScreen(string space[51][69]);
