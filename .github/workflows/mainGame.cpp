@@ -199,6 +199,7 @@ int main()
             {
                 int color = object.getC();
                 planets[color] = 'x';
+				int currentPlanet = color;
 
                 // check for a win
                 win = true;
@@ -207,10 +208,11 @@ int main()
                         win = false;
                     }
                 }
-
+				 int temp = (rand() % 6) + 1;
+ 					int goingTo = temp;
+ 					//double distance= 
                 // look for if something is still unvisited
                 if (win == false) {
-                    int temp = (rand() % 6) + 1;
                     while (planets[temp] == 'x') {
                         temp = (rand() % 6) + 1;
                     }
