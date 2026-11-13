@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <conio.h>
 #include "celestials.h"
 using namespace std;
 
@@ -43,30 +44,27 @@ Planet::Planet(int c) {
 void Planet::screenPrint(string board[51][69]) {
 	for (int ii = xCoord; ii < xCoord + size; ii++) { //loop for size, will print square of s size starting in x,y corner
 		for (int jj = yCoord; jj < yCoord + size; jj++) {
-
-			switch (color){
+			switch (color) {
 			case 1: //red
-				board[ii][jj] = "\x1b[31m  \x1b[0m";
-				break;
+			board[ii][jj] = "\x1b[48;5;9m  \x1b[0m";
+			break;
 			case 2: //orange
-				cout<<"hi"<<endl;
-				board[ii][jj] = "\x1b[38;5;166m  \x1b[0m";
+				board[ii][jj] = "\x1b[48;5;66m  \x1b[0m";
 				break;
 			case 3: //yellow
 				board[ii][jj] = "\x1b[103m  \x1b[0m";
 				break;
 			case 4: //blue
-				board[ii][jj] = "\x1b[34m  \x1b[0m";
+				board[ii][jj] = "\x1b[48;5;12m  \x1b[0m";
 				break;
 			case 5: //pink
-				board[ii][jj] = "\x1b[38;5;13m  \x1b[0m";
+				board[ii][jj] = "\x1b[48;5;13m  \x1b[0m";
 				break;
 		 default:
 				break;
 			}
 		}
-	}
+	} 
 	cout << "end" << endl;
-	PrintScreen(board);
  }
 
